@@ -44,6 +44,12 @@
                         </goals>
                     </execution>
                 </executions>
+                <configuration>
+                    <excludes>
+                        <!-- THIRD-PARTY CODE -->
+                        <exclude>src/main/javascript/lib/sinon-1.5.2.js</exclude>
+                    </excludes>
+                </configuration>
             </plugin>
             <plugin>
                 <groupId>org.scala-tools</groupId>
