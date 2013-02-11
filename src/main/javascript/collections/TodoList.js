@@ -1,7 +1,7 @@
 define([
     "underscore",
     "backbone",
-    "models/todo"
+    "models/Todo"
 ], function (_, Backbone, Todo) {
     var TodosCollection = Backbone.Collection.extend({
         model: Todo,

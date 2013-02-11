@@ -28,9 +28,9 @@
                     </execution>
                 </executions>
                 <configuration>
-                    <timeout>15000</timeout>
+                    <timeout>30000</timeout>
                     <extraPathsToServe><path>target</path></extraPathsToServe>
-                    <webPathToRequireDotJsConfig>require_config.js</webPathToRequireDotJsConfig>
+                    <webPathToRequireDotJsConfig>RequireConfig.js</webPathToRequireDotJsConfig>
                 </configuration>
             </plugin>
             <plugin>
@@ -47,7 +47,10 @@
                 <configuration>
                     <excludes>
                         <!-- THIRD-PARTY CODE -->
+                        <exclude>src/main/javascript/lib/backbone-0.9.10.min.js</exclude>
+                        <exclude>src/main/javascript/lib/jquery-1.9.1.min.js</exclude>
                         <exclude>src/main/javascript/lib/sinon-1.5.2.js</exclude>
+                        <exclude>src/main/javascript/lib/underscore-1.4.4.min.js</exclude>
                     </excludes>
                 </configuration>
             </plugin>

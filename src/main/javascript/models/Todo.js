@@ -2,7 +2,7 @@ define([
     "underscore",
     "backbone"
 ], function (_, Backbone) {
-    var TodoModel = Backbone.Model.extend({
+    var Todo = Backbone.Model.extend({
         defaults: {
             title: "",
             completed: false
@@ -21,5 +21,5 @@ define([
         }
     });
 
-    return TodoModel;
+    return Todo;
 });

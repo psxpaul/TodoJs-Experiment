@@ -3,7 +3,7 @@ define([
     "underscore",
     "backbone",
     "text!todos.html",
-    "common"
+    "Common"
 ], function ($, _, Backbone, todosTemplate, Common) {
     var TodoView = Backbone.View.extend({
         tagName:  "li",

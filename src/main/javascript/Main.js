@@ -1,11 +1,11 @@
 require([
-    "views/app",
-    "routers/router"
-], function (AppView, Workspace) {
+    "views/TodoApp",
+    "routers/Workspace"
+], function (TodoApp, Workspace) {
     // Initialize routing and start Backbone.history()
     new Workspace();
     Backbone.history.start();
 
     // Initialize the application view
-    new AppView();
+    new TodoApp();
 });

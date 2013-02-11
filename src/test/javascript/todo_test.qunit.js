@@ -1,5 +1,5 @@
 define([
-    "models/todo",
+    "models/Todo",
     "sinon"
 ], function (Todo, sinon) {
     module("Todo Model Test", {

@@ -2,12 +2,12 @@ define([
     "jquery",
     "underscore",
     "backbone",
-    "collections/todos",
-    "views/todos",
+    "collections/TodoList",
+    "views/TodoView",
     "text!stats.html",
-    "common"
-], function ($, _, Backbone, Todos, TodoView, statsTemplate, Common) {
-    var AppView = Backbone.View.extend({
+    "Common"
+], function ($, _, Backbone, TodoList, TodoView, statsTemplate, Common) {
+    var TodoApp = Backbone.View.extend({
         el: "#todoapp",
         template: _.template(statsTemplate),
         events: {
@@ -21,19 +21,19 @@ define([
             this.$footer = this.$("#footer");
             this.$main = this.$("#main");
 
-            this.listenTo(Todos, "add", this.addOne);
-            this.listenTo(Todos, "reset", this.addAll);
-            this.listenTo(Todos, "change:completed", this.filterOne);
-            this.listenTo(Todos, "filter", this.filterAll);
-            this.listenTo(Todos, "all", this.render);
+            this.listenTo(TodoList, "add", this.addOne);
+            this.listenTo(TodoList, "reset", this.addAll);
+            this.listenTo(TodoList, "change:completed", this.filterOne);
+            this.listenTo(TodoList, "filter", this.filterAll);
+            this.listenTo(TodoList, "all", this.render);
 
-            Todos.fetch();
+            TodoList.fetch();
         },
         render: function () {
-            var completed = Todos.completed().length;
-            var remaining = Todos.remaining().length;
+            var completed = TodoList.completed().length;
+            var remaining = TodoList.remaining().length;
 
-            if (Todos.length) {
+            if (TodoList.length) {
                 this.$main.show();
                 this.$footer.show();
 
@@ -59,18 +59,18 @@ define([
         },
         addAll: function () {
             this.$("#todo-list").html("");
-            Todos.each(this.addOne, this);
+            TodoList.each(this.addOne, this);
         },
         filterOne: function (todo) {
             todo.trigger("visible");
         },
         filterAll: function () {
-            Todos.each(this.filterOne, this);
+            TodoList.each(this.filterOne, this);
         },
         newAttributes: function () {
             return {
                 title: this.$input.val().trim(),
-                order: Todos.nextOrder(),
+                order: TodoList.nextOrder(),
                 completed: false
             };
         },
@@ -79,17 +79,17 @@ define([
                 return;
             }
 
-            Todos.create(this.newAttributes());
+            TodoList.create(this.newAttributes());
             this.$input.val("");
         },
         clearCompleted: function () {
-            _.invoke(Todos.completed(), "destroy");
+            _.invoke(TodoList.completed(), "destroy");
             return false;
         },
         toggleAllComplete: function () {
             var completed = this.allCheckbox.checked;
 
-            Todos.each(function (todo) {
+            TodoList.each(function (todo) {
                 todo.save({
                     "completed": completed
                 });
@@ -97,5 +97,5 @@ define([
         }
     });
 
-    return AppView;
+    return TodoApp;
 });

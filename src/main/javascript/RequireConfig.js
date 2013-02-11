@@ -15,10 +15,10 @@ var require = {
         }
     },
     paths: {
-        jquery: "http://cdnjs.cloudflare.com/ajax/libs/jquery/1.9.1/jquery.min",
-        underscore: "http://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.4.4/underscore-min",
-        backbone: "http://cdnjs.cloudflare.com/ajax/libs/backbone.js/0.9.10/backbone-min",
+        jquery: "lib/jquery-1.8.3.min",
+        underscore: "lib/underscore-1.4.4.min",
+        backbone: "lib/backbone-0.9.10.min",
         sinon: "lib/sinon-1.5.2",
-        text: "http://cdnjs.cloudflare.com/ajax/libs/require-text/2.0.3/text"
+        text: "lib/text-2.0.5"
     }
 };
